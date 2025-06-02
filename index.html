@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>title</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bookSection">
+        <button class="showLibrary">showLibrary</button>
+        <button class="emptyLibrary">emptyLibrary</button>
+        <button class="newBookButton">addNewBook</button>
+
+        <div class="form-container hidden">
+            <h2>New Book Form</h2>
+            <form id="addBookForm" action="">
+                <label for="title">Title:</label><br>
+                <input type="text" id="title" name="title" required>
+
+                <label for="author">Author: </label>
+                <input type="text" id="author" name="author" required><br><br>
+
+                <label for="pages">Number of Pages:</label><br>
+                <input type="number" id="pages" name="pages" min="1" required>
+
+                <p>Already read?</p>
+                <label for="read-yes">Yes</label>
+                <input type="radio" name="already_read" id="read-yes" value="true" required>
+                <label for="read-no">No</label>
+                <input type="radio" name="already_read" id="read-no" value="false" required><br><br>
+
+                <button type="submit">Add Book</button>
+            </form>
+        </div>
+
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Read</th>
+            </tr>
+            <tbody class="bookList">
+            </tbody>
+    </div>
+</body>
+</html>
