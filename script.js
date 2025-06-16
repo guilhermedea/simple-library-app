@@ -1,16 +1,35 @@
 const myLibrary = [];
 
-function Book (title, author, pages, read) {
-    // Ensure 'read' is a boolean internally for easier toggling
-    // The form sends "true" or "false" as strings.
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = (read === 'true'); // Convert string "true" to boolean true, others to false
-    this.id = crypto.randomUUID();
+// function Book (title, author, pages, read) {
+//     // Ensure 'read' is a boolean internally for easier toggling
+//     // The form sends "true" or "false" as strings.
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.read = (read === 'true'); // Convert string "true" to boolean true, others to false
+//     this.id = crypto.randomUUID();
 
-    // Instance method - uses 'this' to refer to instance properties
-    this.info = () => {
+//     // Instance method - uses 'this' to refer to instance properties
+//     this.info = () => {
+//         // Now uses this.read, this.title, etc.
+//         if (this.read) { // 'this.read' is now a boolean
+//             return (`${this.title}, by ${this.author}, ${this.pages} pages, already read.`);
+//         } else {
+//             return (`${this.title}, by ${this.author}, ${this.pages} pages, not read yet.`);
+//         }
+//     }
+// }
+
+class Book {
+    constructor (title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = (read === 'true'); // Convert string "true" to boolean true, others to false
+        this.id = crypto.randomUUID();
+    }
+
+    info = () => {
         // Now uses this.read, this.title, etc.
         if (this.read) { // 'this.read' is now a boolean
             return (`${this.title}, by ${this.author}, ${this.pages} pages, already read.`);
@@ -18,6 +37,10 @@ function Book (title, author, pages, read) {
             return (`${this.title}, by ${this.author}, ${this.pages} pages, not read yet.`);
         }
     }
+
+    toggleReadStatus () {
+    this.read = !this.read; // 'this.read' is a boolean, so '!' works as expected.
+};
 }
 
 // Prototype method - defined correctly using a traditional function
@@ -39,7 +62,7 @@ function displayBooks() {
         const bookItem = document.createElement('tr');
         bookItem.classList.add('book-item');
         bookItem.setAttribute('data-id', book.id);
-        const readStatusText = Book.read ? 'Read' : 'Not Read';
+        const readStatusText = book.read ? 'Read' : 'Not Read';
         
         bookItem.innerHTML = `
             <td>${book.title}</td>
